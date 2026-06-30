@@ -1,27 +1,40 @@
-form {
+main {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#container {
+#full-grid {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#grid {
     display: grid;
-    grid-template: repeat(48, 1fr) / repeat(7, 1fr);
-    border: solid 2px black;
+    grid-template: repeat(49, 1fr) / repeat(7, 1fr);
     width: 700px;
     height: 1000px;
     margin: 50px 0 50px 0;
 }
 
-div {
-    background-color: white;
-    border: solid 1px black;
+#time-labels {
+    display: grid;
+    grid-template: repeat(49, 1fr) / auto;
+    height: 1000px;
+    margin: 50px 0 50px 0;
 }
 
-.hovering {
-    background-color: lightyellow;
+button {
+    background-color: white;
+    border: solid 0.5px black;
 }
 
 .selected {
     background-color: green;
+}
+
+.label {
+    text-align: center;
+    border: none;
 }
