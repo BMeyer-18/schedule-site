@@ -41,17 +41,18 @@ function setTimeLabels() {
 
 function submit() {
     const name = document.getElementById("name").value;
-    const availability = [];
+    let availability = [];
     for (let i = 7; i < grid.children.length; i++) {
         if (grid.children.item(i).classList.contains("selected")) {
-            availability.push(1);
+            availability += '1';
         } else {
-            availability.push(0);
+            availability += '0';
         }
     }
     const data = {
         name: name,
         availability: availability
     };
-    test.innerHTML = JSON.stringify(data);
+    //test.innerHTML = JSON.stringify(data);
+    test.innerHTML = availability.length;
 }
