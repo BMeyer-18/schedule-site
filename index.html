@@ -9,25 +9,31 @@
         <h1 align="center">Scheduler</h1>
 
         <main>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name">
-            
-                <section id="full-grid">
-                    <div id="time-labels"></div>
-                    <div id="grid">
-                        <div class="label">Sunday</div>
-                        <div class="label">Monday</div>
-                        <div class="label">Tuesday</div>
-                        <div class="label">Wednesday</div>
-                        <div class="label">Thursday</div>
-                        <div class="label">Friday</div>
-                        <div class="label">Saturday</div>
-                    </div>
-                </section>
+            <form>
+                <div class="question">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <div class="question">
+                    <label for="event">Event:</label>
+                    <input type="text" id="event" name="event">
+                </div>
+            </form>
+            <section id="full-grid">
+                <div id="time-labels"></div>
+                <div id="grid">
+                    <div class="label">Sunday</div>
+                    <div class="label">Monday</div>
+                    <div class="label">Tuesday</div>
+                    <div class="label">Wednesday</div>
+                    <div class="label">Thursday</div>
+                    <div class="label">Friday</div>
+                    <div class="label">Saturday</div>
+                </div>
+            </section>
             <button onclick="submit()">submit</button>
+            <p align="center" id="message"></p>
         </main>
-
-        <h2 id="test">e</h2>
 
         <script src="./script.js"></script>
     </body>
