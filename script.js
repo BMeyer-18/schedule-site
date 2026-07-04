@@ -1,5 +1,7 @@
+let availabilityLevel = 5;
 const grid = document.getElementById("grid");
 setTimeLabels();
+prepareLevelButtons();
 for (let i = 0; i < 336; i++) {
     addTile(grid);
 }
@@ -8,18 +10,14 @@ function addTile(grid) {
     const newTile = document.createElement("button");
     newTile.addEventListener("mouseover", event => selectTile(event, newTile));
     newTile.addEventListener("mousedown", event => selectTile(event, newTile));
-    /*newTile.addEventListener("mouseout", () => {
-        newTile.classList.remove("hovering");
-    });*/
     grid.appendChild(newTile);
 }
 
 function selectTile(event, tile) {
-    if (event.buttons > 0) {
-        tile.classList.toggle("selected");
-    } /*else if (!tile.classList.contains("selected")) {
-        tile.classList.add("hovering");
-    }*/
+    if (event.buttons > 0 && !tile.classList.contains(`level-${availabilityLevel}`)) {
+        tile.classList.remove(...tile.classList);
+        tile.classList.add(`level-${availabilityLevel}`);
+    }
 }
 
 function setTimeLabels() {
@@ -37,22 +35,33 @@ function setTimeLabels() {
     }
 }
 
+function prepareLevelButtons() {
+    const levelButtons = document.querySelectorAll(".selector");
+    levelButtons.forEach(levelButton => {
+        levelButton.addEventListener("click", () => {
+            document.querySelector(".selected").classList.remove("selected");
+            availabilityLevel = parseInt(levelButton.innerHTML);
+            levelButton.classList.add("selected");
+        });
+    });
+}
+
 async function submit() {
     const message = document.getElementById("message");
     const name = document.getElementById("name").value;
     const event = document.getElementById("event").value;
-    if(name === "" || event === "") {
+    if (name === "" || event === "") {
         message.innerHTML = "Please enter a name and event.";
         return;
     }
 
-    let availability = [];
+    let availability = "";
     for (let i = 7; i < grid.children.length; i++) {
-        if (grid.children.item(i).classList.contains("selected")) {
-            availability += '1';
-        } else {
-            availability += '0';
+        if (grid.children.item(i).classList.length === 0) {
+            message.innerHTML = "Please fill out every time slot on the grid.";
+            return;
         }
+        availability += grid.children.item(i).className.slice(-1);
     }
 
     const data = {
@@ -70,7 +79,7 @@ async function submit() {
     });
     const responseObj = await response.json();
 
-    if(response.status === 200 || response.status === 201) {
+    if (response.status === 200 || response.status === 201) {
         message.innerHTML = "SUCCESS: " + responseObj.info;
     } else {
         message.innerHTML = "FAILURE: " + responseObj.info;
