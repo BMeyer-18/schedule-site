@@ -85,3 +85,25 @@ async function submit() {
         message.innerHTML = "FAILURE: " + responseObj.info;
     }
 }
+
+async function remove() {
+    const message = document.getElementById("message");
+    const name = document.getElementById("name").value;
+    const event = document.getElementById("event").value;
+    if (name === "" || event === "") {
+        message.innerHTML = "Please enter a name and event.";
+        return;
+    }
+
+    const response = await fetch(`http://localhost:3000/api/v1/schedules/${event}/${name}`, {
+        method: "DELETE",
+        mode: "cors",
+    });
+    const responseObj = await response.json();
+
+    if (response.status === 200) {
+        message.innerHTML = "SUCCESS: " + responseObj.info;
+    } else {
+        message.innerHTML = "FAILURE: " + responseObj.info;
+    }
+}
