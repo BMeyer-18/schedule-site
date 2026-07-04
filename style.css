@@ -1,3 +1,9 @@
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 main, .question {
     display: flex;
     flex-direction: column;
@@ -32,38 +38,6 @@ main, .question {
 button {
     background-color: white;
     border: solid 0.5px black;
-}
-
-.selected {
-    font-weight: bold;
-    border: solid 3px black;
-}
-
-.selector {
-    height: 30px;
-    width: 30px;
-    font-size: 20px;
-    margin: 0 5px 0 5px;
-}
-
-.level-1 {
-    background-color: rgb(255,0,100);
-}
-
-.level-2 {
-    background-color: rgb(191.25,63.75,100);
-}
-
-.level-3 {
-    background-color: rgb(127.5,127.5,100);
-}
-
-.level-4 {
-    background-color: rgb(63.75,191.25,100);
-}
-
-.level-5 {
-    background-color: rgb(0,255,100);
 }
 
 .label {
