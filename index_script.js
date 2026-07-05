@@ -23,15 +23,12 @@ function selectTile(event, tile) {
 function setTimeLabels() {
     const timeGrid = document.getElementById("time-labels");
     timeGrid.appendChild(document.createElement("div"));
-    for (let i = 0; i < 48; i++) {
+    for (let i = 0; i < 24; i++) {
         const label = document.createElement("div");
         label.style.textAlign = "right";
-        if (i%2 == 0) {
-            label.innerHTML = `${i/2}:00`
-        } else {
-            label.innerHTML = `${Math.floor(i/2)}:30`
-        }
+        label.innerHTML = `${i}:00`
         timeGrid.appendChild(label);
+        timeGrid.appendChild(document.createElement("div"));
     }
 }
 
