@@ -88,9 +88,37 @@ function makeResponseButtons() {
         });
         div.appendChild(newButton);
     }
+    const finalButton = document.createElement("button");
+    finalButton.innerHTML = "enable all";
+    finalButton.addEventListener("click", () => toggleAll());
+    div.appendChild(finalButton);
+}
+
+function toggleAll() {
+    const buttons = document.getElementById("response-buttons").children;
+    let showingAvailability = false;
+
+    for (status of userMap.values()) {
+        showingAvailability = (status.toString() === "true") ? true : showingAvailability;
+    }
+
+    if (showingAvailability) {
+        for (i = 0; i < buttons.length-1; i++) {
+            buttons.item(i).classList.remove("selected");
+            userMap.set(buttons.item(i).innerHTML, false);
+        }
+    } else {
+        for (i = 0; i < buttons.length-1; i++) {
+            buttons.item(i).classList.add("selected");
+            userMap.set(buttons.item(i).innerHTML, true);
+        }
+    }
+
+    updateAvailability();
 }
 
 function updateAvailability() {
+    const finalButton = document.getElementById("response-buttons").lastElementChild;
     const activatedNames = [];
     for([name, status] of userMap) {
         if (status.toString() === "true") {
@@ -116,9 +144,12 @@ function updateAvailability() {
             let multiplier = (averageAvailability[i-7]-1)/4;
             grid.children.item(i).style.backgroundColor = `rgb(${255*(1-multiplier)},${255*multiplier},100)`;
         }
+
+        finalButton.innerHTML = "disable all";
     } else {
         for (let i = 7; i < grid.children.length; i++) {
             grid.children.item(i).style.backgroundColor = "transparent";
         }
+        finalButton.innerHTML = "enable all";
     }
 }
