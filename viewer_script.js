@@ -3,14 +3,30 @@ const userMap = new Map();
 const grid = document.getElementById("grid");
 setTimeLabels();
 for (let i = 0; i < 336; i++) {
-    addTile(grid);
+    addTile(i);
+}
+grid.addEventListener("mouseleave", () => {
+    const userLevels = document.getElementById("user-levels");
+    userLevels.textContent = '';
+});
+
+function addTile(tileNum) {
+    const newTile = document.createElement("button");
+    newTile.addEventListener("mouseover", () => showUserLevels(tileNum));
+    grid.appendChild(newTile);
 }
 
-function addTile(grid) {
-    const newTile = document.createElement("button");
-    //newTile.addEventListener("mouseover", event => selectTile(event, newTile));
-    //newTile.addEventListener("mousedown", event => selectTile(event, newTile));
-    grid.appendChild(newTile);
+function showUserLevels(tileNum) {
+    const userLevels = document.getElementById("user-levels");
+    userLevels.textContent = '';
+
+    for ([name, availability] of availabilityMap) {
+        let label = document.createElement("p");
+        label.innerHTML = `${name}: ${availability[tileNum]}`;
+        let multiplier = (availability[tileNum]-1)/4;
+        label.style.color = `rgb(${255*(1-multiplier)},${255*multiplier},100)`;
+        userLevels.appendChild(label);
+    }
 }
 
 function setTimeLabels() {
@@ -20,8 +36,8 @@ function setTimeLabels() {
         const label = document.createElement("div");
         label.style.textAlign = "right";
         label.innerHTML = `${i}:00`
+        label.style.gridRow = "span 2";
         timeGrid.appendChild(label);
-        timeGrid.appendChild(document.createElement("div"));
     }
 }
 

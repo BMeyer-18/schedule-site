@@ -32,7 +32,7 @@ main, .question {
     display: grid;
     grid-template: repeat(49, 1fr) / auto;
     height: 1000px;
-    margin: 50px 0 50px 0;
+    margin: 50px 10px 50px 10px;
 }
 
 button {
