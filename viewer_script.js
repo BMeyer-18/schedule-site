@@ -1,4 +1,5 @@
-const responseMap = new Map();
+const availabilityMap = new Map();
+const userMap = new Map();
 const grid = document.getElementById("grid");
 setTimeLabels();
 for (let i = 0; i < 336; i++) {
@@ -50,43 +51,74 @@ async function loadResponses() {
         return;
     }
 
-    responseMap.clear();
-    responseMap.set("average", []);
+    availabilityMap.clear();
+    userMap.clear();
     for (user of responseObj) {
-        responseMap.set(user.name, []);
+        availabilityMap.set(user.name, []);
+        userMap.set(user.name, false);
     }
 
-    const responseCount = responseObj.length;
-    for (i = 0; i < responseObj[0].availability.length; i++) {
-        let responseSum = 0;
+    //const responseCount = responseObj.length;
+    for (i = 0; i < 336; i++) {
+        //let responseSum = 0;
         for (user of responseObj) {
-            responseSum += parseInt(user.availability[i]);
-            responseMap.get(user.name).push(parseInt(user.availability[i]));
+            //responseSum += parseInt(user.availability[i]);
+            availabilityMap.get(user.name).push(parseInt(user.availability[i]));
         }
-        responseMap.get("average").push(responseSum/responseCount);
+        //availabilityMap.get("average").push(responseSum/responseCount);
     }
 
     makeResponseButtons();
-    showUserAvailability("average");
+    updateAvailability();
 }
 
 function makeResponseButtons() {
     const div = document.getElementById("response-buttons");
     div.textContent = '';
-    const names = responseMap.keys();
+    const names = availabilityMap.keys();
     while (true) {
         let currentName = names.next();
         if (currentName.done) break;
         let newButton = document.createElement("button");
         newButton.innerHTML = currentName.value;
-        newButton.addEventListener("click", () => showUserAvailability(currentName.value));
+        newButton.addEventListener("click", () => {
+            newButton.classList.toggle("selected");
+            userMap.set(currentName.value, !userMap.get(currentName.value));
+            updateAvailability();
+        });
         div.appendChild(newButton);
     }
 }
 
-function showUserAvailability(name) {
-    for (let i = 7; i < grid.children.length; i++) {
-        let multiplier = (responseMap.get(name)[i-7]-1)/4;
-        grid.children.item(i).style.backgroundColor = `rgb(${255*(1-multiplier)},${255*multiplier},100)`;
+function updateAvailability() {
+    const activatedNames = [];
+    for([name, status] of userMap) {
+        if (status.toString() === "true") {
+            activatedNames.push(name);
+        }
+    }
+
+    if (activatedNames.length > 0) {
+        let averageAvailability = [];
+        if (activatedNames.length > 1) {
+            for (i = 0; i < 336; i++) {
+                let currentSum = 0;
+                for (name of activatedNames) {
+                    currentSum += availabilityMap.get(name)[i];
+                }
+                averageAvailability.push(currentSum/activatedNames.length);
+            }
+        } else {
+            averageAvailability = availabilityMap.get(activatedNames[0]);
+        }
+
+        for (let i = 7; i < grid.children.length; i++) {
+            let multiplier = (averageAvailability[i-7]-1)/4;
+            grid.children.item(i).style.backgroundColor = `rgb(${255*(1-multiplier)},${255*multiplier},100)`;
+        }
+    } else {
+        for (let i = 7; i < grid.children.length; i++) {
+            grid.children.item(i).style.backgroundColor = "transparent";
+        }
     }
 }
