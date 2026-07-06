@@ -2,6 +2,7 @@ let availabilityLevel = 5;
 const grid = document.getElementById("grid");
 setTimeLabels();
 prepareLevelButtons();
+checkURL();
 for (let i = 0; i < 336; i++) {
     addTile(grid);
 }
@@ -41,6 +42,12 @@ function prepareLevelButtons() {
             levelButton.classList.add("selected");
         });
     });
+}
+
+function checkURL() {
+    const eventInput = document.getElementById("event");
+    const url = new URLSearchParams(window.location.search);
+    eventInput.value = url.get('event');
 }
 
 async function submit() {
