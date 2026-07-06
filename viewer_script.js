@@ -58,16 +58,13 @@ async function loadResponses() {
         userMap.set(user.name, false);
     }
 
-    //const responseCount = responseObj.length;
     for (i = 0; i < 336; i++) {
-        //let responseSum = 0;
         for (user of responseObj) {
-            //responseSum += parseInt(user.availability[i]);
             availabilityMap.get(user.name).push(parseInt(user.availability[i]));
         }
-        //availabilityMap.get("average").push(responseSum/responseCount);
     }
 
+    document.getElementById("instructions").style.display = "block";
     makeResponseButtons();
     updateAvailability();
 }
@@ -81,6 +78,7 @@ function makeResponseButtons() {
         if (currentName.done) break;
         let newButton = document.createElement("button");
         newButton.innerHTML = currentName.value;
+        newButton.classList.add("selector");
         newButton.addEventListener("click", () => {
             newButton.classList.toggle("selected");
             userMap.set(currentName.value, !userMap.get(currentName.value));
@@ -90,8 +88,9 @@ function makeResponseButtons() {
     }
     const finalButton = document.createElement("button");
     finalButton.innerHTML = "enable all";
+    finalButton.classList.add("selector");
     finalButton.addEventListener("click", () => toggleAll());
-    div.appendChild(finalButton);
+    div.parentElement.appendChild(finalButton);
 }
 
 function toggleAll() {
@@ -103,12 +102,12 @@ function toggleAll() {
     }
 
     if (showingAvailability) {
-        for (i = 0; i < buttons.length-1; i++) {
+        for (i = 0; i < buttons.length; i++) {
             buttons.item(i).classList.remove("selected");
             userMap.set(buttons.item(i).innerHTML, false);
         }
     } else {
-        for (i = 0; i < buttons.length-1; i++) {
+        for (i = 0; i < buttons.length; i++) {
             buttons.item(i).classList.add("selected");
             userMap.set(buttons.item(i).innerHTML, true);
         }
@@ -118,7 +117,7 @@ function toggleAll() {
 }
 
 function updateAvailability() {
-    const finalButton = document.getElementById("response-buttons").lastElementChild;
+    const finalButton = document.getElementById("response-buttons").parentElement.lastElementChild;
     const activatedNames = [];
     for([name, status] of userMap) {
         if (status.toString() === "true") {
