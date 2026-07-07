@@ -27,8 +27,27 @@
                     <input type="password" id="password" name="password">
                 </div>
             </form>
-            <button onclick="submitEvent()">create</button>
+            <div>
+                <button onclick="submitEvent()" style="background-color: lightgreen;">create</button>
+                <button onclick="deleteEvent()" style="background-color: lightcoral;">delete</button>
+            </div>
             <p align="center" id="message"></p>
+            <br>
+            <h2>IMPORTANT WARNING:</h2>
+            <p align="center">
+                <strong>
+                    PLEASE DO NOT USE A PASSWORD YOU USE FOR OTHER SITES<br>
+                    OR A PASSWORD YOU REALLY CARE ABOUT!!!<br>
+                </strong>
+                <br>
+                I made this site to teach myself about server-side programming<br>
+                and API use. I made this all myself, and I know <em>Jack Shit</em> about<br>
+                cybersecurity. There is pretty much no protection in place against<br>
+                other people on the network seeing the information you're sending.<br>
+                <br>
+                Also I can personally see anything you put in here.<br>
+                I won't look (I promise) but there isn't anything in place to stop me.
+            </p>
         </main>
 
         <script src="./registration_script.js"></script>
