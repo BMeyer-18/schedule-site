@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <title>Scheduler</title>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Scheduler</h1>
+            <div align="right">
+                <a href="./index.html"><h2>Send Your Schedule</h2></a>
+                <a href="./viewer.html"><h2>View Responses</h2></a>
+            </div>
+        </header>
+
+        <h1 align="center">Create New Event</h1>
+
+        <main>
+            <form>
+                <div class="question">
+                    <label for="event">Event:</label>
+                    <input type="text" id="event" name="event">
+                </div>
+                <div class="question">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password">
+                </div>
+            </form>
+            <button onclick="submitEvent()">create</button>
+            <p align="center" id="message"></p>
+        </main>
+
+        <script src="./registration_script.js"></script>
+    </body>
+</html>
