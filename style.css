@@ -49,3 +49,8 @@ button {
     font-weight: bold;
     border: solid 3px black;
 }
+
+footer {
+    margin: 100px 0 0 0;
+    text-align: center;
+}
