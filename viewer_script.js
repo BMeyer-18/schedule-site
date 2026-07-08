@@ -44,8 +44,21 @@ function setTimeLabels() {
 async function loadResponses() {
     const message = document.getElementById("message");
     const event = document.getElementById("event").value;
-    if (event === "") {
-        message.innerHTML = "Please enter an event";
+    const password = document.getElementById("password").value;
+    if (event.length === 0 || password.length === 0) {
+        message.innerHTML = "Please enter an event and password";
+        return;
+    }
+
+    const verificationResponse = await fetch(`http://localhost:3000/api/v1/passwords/${event}/verify`, {
+        method: "GET",
+        mode: "cors",
+        headers: {
+            "Password": password
+        }
+    });
+    if (verificationResponse.status !== 200) {
+        message.innerHTML = "Event or password is incorrect";
         return;
     }
 
@@ -59,7 +72,7 @@ async function loadResponses() {
         if (responseObj.length > 0) {
             message.innerHTML = `SUCCESS: responses loaded for event ${responseObj[0].event}`;
             const link = `file:///home/bmeyer/Documents/webdev/schedule-site/index.html?event=${responseObj[0].event}`;
-            message.innerHTML += `<br><br>Sendable response link: <a href="${link}">${link}</a>`;
+            message.innerHTML += `<br><br>Sendable response link:<br><a href="${link}">${link}</a>`;
         } else {
             message.innerHTML = `FAILURE: no responses found for event ${event.toLowerCase()}`;
             return;

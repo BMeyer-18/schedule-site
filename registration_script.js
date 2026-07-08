@@ -22,6 +22,8 @@ async function submitEvent() {
 
     if (response.status === 201) {
         message.innerHTML = "SUCCESS: " + responseObj.info;
+        const link = `file:///home/bmeyer/Documents/webdev/schedule-site/index.html?event=${event}`;
+        message.innerHTML += `<br><br>Sendable response link:<br><a href="${link}">${link}</a>`;
     } else {
         message.innerHTML = "FAILURE: " + responseObj.info;
     }
