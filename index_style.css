@@ -1,8 +1,14 @@
+#level-description {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .selector {
     height: 30px;
     width: 30px;
     font-size: 20px;
-    margin: 0 5px 0 5px;
+    margin: 0 10px 0 10px;
 }
 
 .level-1 {

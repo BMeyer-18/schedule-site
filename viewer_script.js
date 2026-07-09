@@ -72,7 +72,7 @@ async function loadResponses() {
         if (responseObj.length > 0) {
             message.innerHTML = `SUCCESS: responses loaded for event ${responseObj[0].event}`;
             const link = `file:///home/bmeyer/Documents/webdev/schedule-site/index.html?event=${responseObj[0].event}`;
-            message.innerHTML += `<br><br>Sendable response link:<br><a href="${link}">${link}</a>`;
+            document.getElementById("response-link").innerHTML = `Sendable response link:<br><a href="${link}">${link}</a>`;
         } else {
             message.innerHTML = `FAILURE: no responses found for event ${event.toLowerCase()}`;
             return;
@@ -95,7 +95,7 @@ async function loadResponses() {
         }
     }
 
-    document.getElementById("instructions").style.display = "block";
+    document.querySelectorAll(".instructions").forEach(el => el.style.display = "block");
     makeResponseButtons();
     updateAvailability();
 }
