@@ -22,16 +22,16 @@ main, .question {
 
 #grid {
     display: grid;
-    grid-template: repeat(49, 1fr) / repeat(7, 1fr);
+    grid-template: repeat(33, 1fr) / repeat(7, 1fr);
     width: 700px;
-    height: 1000px;
+    height: 800px;
     margin: 50px 0 50px 0;
 }
 
 #time-labels {
     display: grid;
-    grid-template: repeat(49, 1fr) / auto;
-    height: 1000px;
+    grid-template: repeat(33, 1fr) / auto;
+    height: 800px;
     margin: 50px 10px 50px 10px;
 }
 

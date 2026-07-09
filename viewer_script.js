@@ -2,7 +2,7 @@ const availabilityMap = new Map();
 const userMap = new Map();
 const grid = document.getElementById("grid");
 setTimeLabels();
-for (let i = 0; i < 336; i++) {
+for (let i = 0; i < 224; i++) {
     addTile(i);
 }
 grid.addEventListener("mouseleave", () => {
@@ -32,7 +32,7 @@ function showUserLevels(tileNum) {
 function setTimeLabels() {
     const timeGrid = document.getElementById("time-labels");
     timeGrid.appendChild(document.createElement("div"));
-    for (let i = 0; i < 24; i++) {
+    for (let i = 8; i < 24; i++) {
         const label = document.createElement("div");
         label.style.textAlign = "right";
         label.innerHTML = `${i}:00`
@@ -89,7 +89,7 @@ async function loadResponses() {
         userMap.set(user.name, false);
     }
 
-    for (i = 0; i < 336; i++) {
+    for (i = 0; i < 224; i++) {
         for (user of responseObj) {
             availabilityMap.get(user.name).push(parseInt(user.availability[i]));
         }
@@ -163,7 +163,7 @@ function updateAvailability() {
     if (activatedNames.length > 0) {
         let averageAvailability = [];
         if (activatedNames.length > 1) {
-            for (i = 0; i < 336; i++) {
+            for (i = 0; i < 224; i++) {
                 let currentSum = 0;
                 for (name of activatedNames) {
                     currentSum += availabilityMap.get(name)[i];

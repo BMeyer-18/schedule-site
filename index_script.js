@@ -3,7 +3,7 @@ const grid = document.getElementById("grid");
 setTimeLabels();
 prepareLevelButtons();
 checkURL();
-for (let i = 0; i < 336; i++) {
+for (let i = 0; i < 224; i++) {
     addTile(grid);
 }
 
@@ -24,7 +24,7 @@ function selectTile(event, tile) {
 function setTimeLabels() {
     const timeGrid = document.getElementById("time-labels");
     timeGrid.appendChild(document.createElement("div"));
-    for (let i = 0; i < 24; i++) {
+    for (let i = 8; i < 24; i++) {
         const label = document.createElement("div");
         label.style.textAlign = "right";
         label.innerHTML = `${i}:00`
