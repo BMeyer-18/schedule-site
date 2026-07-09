@@ -73,6 +73,8 @@ async function submit() {
         availability: availability
     };
 
+    message.innerHTML = "loading...";
+
     const response = await fetch(`http://localhost:3000/api/v1/schedules/${event}`, {
         method: "PUT",
         mode: "cors",
@@ -98,6 +100,8 @@ async function remove() {
         message.innerHTML = "Please enter a name and event.";
         return;
     }
+
+    message.innerHTML = "loading...";
 
     const response = await fetch(`http://localhost:3000/api/v1/schedules/${event}/${name}`, {
         method: "DELETE",

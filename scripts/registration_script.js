@@ -8,7 +8,9 @@ async function submitEvent() {
         return;
     }
 
-    const response = await fetch(`http://localhost:3000/api/v1/passwords/${event}`, {
+    message.innerHTML = "loading...";
+
+    const response = await fetch(`http://localhost:3000/api/v1/events/${event}`, {
         method: "POST",
         mode: "cors",
         headers: {
@@ -39,7 +41,9 @@ async function deleteEvent() {
         return;
     }
 
-    const response = await fetch(`http://localhost:3000/api/v1/passwords/${event}`, {
+    message.innerHTML = "loading...";
+
+    const response = await fetch(`http://localhost:3000/api/v1/events/${event}`, {
         method: "DELETE",
         mode: "cors",
         headers: {

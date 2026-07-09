@@ -50,7 +50,9 @@ async function loadResponses() {
         return;
     }
 
-    const verificationResponse = await fetch(`http://localhost:3000/api/v1/passwords/${event}/verify`, {
+    message.innerHTML = "loading...";
+
+    const verificationResponse = await fetch(`http://localhost:3000/api/v1/events/${event}/verify`, {
         method: "GET",
         mode: "cors",
         headers: {
