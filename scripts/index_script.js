@@ -2,6 +2,7 @@ let availabilityLevel = 5;
 const grid = document.getElementById("grid");
 setTimeLabels();
 prepareLevelButtons();
+prepareKeydownListeners();
 checkURL();
 for (let i = 0; i < 224; i++) {
     addTile(grid);
@@ -42,6 +43,21 @@ function prepareLevelButtons() {
             levelButton.classList.add("selected");
         });
     });
+}
+
+function prepareKeydownListeners() {
+    document.onkeydown = event => {
+        try {
+            const key = parseInt(event.key);
+            if (key >= 1 && key <= 5) {
+                document.querySelector(".selected").classList.remove("selected");
+                availabilityLevel = key;
+                document.querySelector(`.level-${key}.selector`).classList.add("selected");
+            }
+        } catch (error) {
+            return;
+        }
+    };
 }
 
 function checkURL() {

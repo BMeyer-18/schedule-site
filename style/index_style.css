@@ -4,11 +4,22 @@
     justify-content: space-between;
 }
 
-.selector {
-    height: 30px;
-    width: 30px;
-    font-size: 20px;
-    margin: 0 10px 0 10px;
+@media (width >= 600px) {
+    .selector {
+        height: 30px;
+        width: 30px;
+        font-size: 20px;
+        margin: 0 10px 0 10px;
+    }
+}
+
+@media (width < 600px) {
+    .selector {
+        height: 50px;
+        width: 50px;
+        font-size: 33px;
+        margin: 0 15px 0 15px;
+    }
 }
 
 .level-1 {
