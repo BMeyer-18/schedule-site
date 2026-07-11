@@ -13,9 +13,9 @@
 
 @media (pointer:coarse) {
     .selector {
-        height: 50px;
-        width: 50px;
-        font-size: 33px;
+        height: 80px;
+        width: 80px;
+        font-size: 53px;
         margin: 0 15px 0 15px;
     }
 }
