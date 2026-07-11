@@ -5,15 +5,20 @@ setTimeLabels();
 for (let i = 0; i < 224; i++) {
     addTile(i);
 }
-grid.addEventListener("mouseleave", () => {
-    const userLevels = document.getElementById("user-levels");
-    userLevels.textContent = '';
-});
+["mouseleave", "touchend", "touchcancel"].forEach(e => 
+    grid.addEventListener(e, () => {
+        const userLevels = document.getElementById("user-levels");
+        userLevels.textContent = '';
+    })
+);
 
 function addTile(tileNum) {
     const newTile = document.createElement("button");
-    newTile.addEventListener("mouseover", () => showUserLevels(tileNum));
+    ["mouseover", "touchmove"].forEach(e => 
+        newTile.addEventListener(e, () => showUserLevels(tileNum)));
     grid.appendChild(newTile);
+
+    newTile.addEventListener("mouseover", () => showUserLevels(tileNum));
 }
 
 function showUserLevels(tileNum) {

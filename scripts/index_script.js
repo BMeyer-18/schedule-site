@@ -10,8 +10,8 @@ for (let i = 0; i < 224; i++) {
 
 function addTile(grid) {
     const newTile = document.createElement("button");
-    newTile.addEventListener("mouseover", event => selectTile(event, newTile));
-    newTile.addEventListener("mousedown", event => selectTile(event, newTile));
+    ["mouseover", "mousedown", "touchmove", "touchstart"].forEach( e =>
+        newTile.addEventListener(e, event => selectTile(event, newTile)));
     grid.appendChild(newTile);
 }
 
