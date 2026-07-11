@@ -10,7 +10,7 @@ async function submitEvent() {
 
     message.innerHTML = "loading...";
 
-    const response = await fetch(`http://localhost:3000/api/v1/events/${event}`, {
+    const response = await fetch(`https://schedule-api-five.vercel.app/api/v1/events/${event}`, {
         method: "POST",
         mode: "cors",
         headers: {
@@ -24,7 +24,7 @@ async function submitEvent() {
 
     if (response.status === 201) {
         message.innerHTML = "SUCCESS: " + responseObj.info;
-        const link = `file:///home/bmeyer/Documents/webdev/schedule-site/index.html?event=${event}`;
+        const link = `https://bmeyer-18.github.io/schedule-site/?event=${event}`;
         message.innerHTML += `<br><br>Sendable response link:<br><a href="${link}">${link}</a>`;
     } else {
         message.innerHTML = "FAILURE: " + responseObj.info;
@@ -43,7 +43,7 @@ async function deleteEvent() {
 
     message.innerHTML = "loading...";
 
-    const response = await fetch(`http://localhost:3000/api/v1/events/${event}`, {
+    const response = await fetch(`https://schedule-api-five.vercel.app/api/v1/events/${event}`, {
         method: "DELETE",
         mode: "cors",
         headers: {

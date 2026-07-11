@@ -52,7 +52,7 @@ async function loadResponses() {
 
     message.innerHTML = "loading...";
 
-    const verificationResponse = await fetch(`http://localhost:3000/api/v1/events/${event}/verify`, {
+    const verificationResponse = await fetch(`https://schedule-api-five.vercel.app/api/v1/events/${event}/verify`, {
         method: "GET",
         mode: "cors",
         headers: {
@@ -64,7 +64,7 @@ async function loadResponses() {
         return;
     }
 
-    const response = await fetch(`http://localhost:3000/api/v1/schedules/${event}`, {
+    const response = await fetch(`https://schedule-api-five.vercel.app/api/v1/schedules/${event}`, {
         method: "GET",
         mode: "cors"
     });
@@ -73,7 +73,7 @@ async function loadResponses() {
     if (response.status === 200) {
         if (responseObj.length > 0) {
             message.innerHTML = `SUCCESS: responses loaded for event ${responseObj[0].event}`;
-            const link = `file:///home/bmeyer/Documents/webdev/schedule-site/index.html?event=${responseObj[0].event}`;
+            const link = `https://bmeyer-18.github.io/schedule-site/?event=${responseObj[0].event}`;
             document.getElementById("response-link").innerHTML = `Sendable response link:<br><a href="${link}">${link}</a>`;
         } else {
             message.innerHTML = `FAILURE: no responses found for event ${event.toLowerCase()}`;

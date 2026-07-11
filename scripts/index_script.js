@@ -75,7 +75,7 @@ async function submit() {
 
     message.innerHTML = "loading...";
 
-    const response = await fetch(`http://localhost:3000/api/v1/schedules/${event}`, {
+    const response = await fetch(`https://schedule-api-five.vercel.app/api/v1/schedules/${event}`, {
         method: "PUT",
         mode: "cors",
         headers: {
@@ -103,7 +103,7 @@ async function remove() {
 
     message.innerHTML = "loading...";
 
-    const response = await fetch(`http://localhost:3000/api/v1/schedules/${event}/${name}`, {
+    const response = await fetch(`https://schedule-api-five.vercel.app/api/v1/schedules/${event}/${name}`, {
         method: "DELETE",
         mode: "cors",
     });
