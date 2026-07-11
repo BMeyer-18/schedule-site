@@ -6,11 +6,7 @@ for (let i = 0; i < 224; i++) {
     addTile(i);
 }
 ["mouseleave", "touchend", "touchcancel"].forEach(e => 
-    grid.addEventListener(e, () => {
-        const userLevels = document.getElementById("user-levels");
-        userLevels.textContent = '';
-    })
-);
+    grid.addEventListener(e, () => document.getElementById("user-levels").textContent = ''));
 
 function addTile(tileNum) {
     const newTile = document.createElement("button");

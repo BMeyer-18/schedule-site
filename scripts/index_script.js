@@ -10,13 +10,22 @@ for (let i = 0; i < 224; i++) {
 
 function addTile(grid) {
     const newTile = document.createElement("button");
-    ["mouseover", "mousedown", "touchmove", "touchstart"].forEach( e =>
-        newTile.addEventListener(e, event => selectTile(event, newTile)));
+    ["mouseover", "mousedown"].forEach(e =>
+        newTile.addEventListener(e, event => selectTileMouse(event, newTile)));
+    ["touchstart", "touchmove"].forEach(e => 
+        newTile.addEventListener(e, () => selectTileTouch(newTile)));
     grid.appendChild(newTile);
 }
 
-function selectTile(event, tile) {
+function selectTileMouse(event, tile) {
     if (event.buttons > 0 && !tile.classList.contains(`level-${availabilityLevel}`)) {
+        tile.classList.remove(...tile.classList);
+        tile.classList.add(`level-${availabilityLevel}`);
+    }
+}
+
+function selectTileTouch(tile) {
+    if (!tile.classList.contains(`level-${availabilityLevel}`)) {
         tile.classList.remove(...tile.classList);
         tile.classList.add(`level-${availabilityLevel}`);
     }
