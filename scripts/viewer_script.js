@@ -74,7 +74,7 @@ async function loadResponses() {
     if (response.status === 200) {
         if (responseObj.length > 0) {
             message.innerHTML = `SUCCESS: responses loaded for event ${responseObj[0].event}`;
-            const link = `https://bmeyer-18.github.io/schedule-site/?event=${responseObj[0].event}`;
+            const link = `https://bmeyer-18.github.io/schedule-site/?event=${responseObj[0].event.replaceAll(" ", "+")}`;
             document.getElementById("response-link").innerHTML = `Sendable response link:<br><a href="${link}">${link}</a>`;
         } else {
             message.innerHTML = `FAILURE: no responses found for event ${event.toLowerCase()}`;
