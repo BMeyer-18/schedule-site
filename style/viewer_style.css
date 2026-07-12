@@ -4,6 +4,14 @@
     justify-content: center;
 }
 
+#load-responses {
+    margin-top: 10px;
+    font-size: 20px;
+    background-color: lightgray;
+    border: solid 2px black;
+    border-radius: 5px;
+}
+
 .selector {
     margin: 5px;
     height: 30px;

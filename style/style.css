@@ -8,6 +8,10 @@ header {
     margin: 10px 0 50px 0;
 }
 
+label {
+    font-weight: bold;
+}
+
 main, .question {
     display: flex;
     flex-direction: column;

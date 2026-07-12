@@ -14,6 +14,10 @@
         </header>
 
         <h1 align="center">View Responses</h1>
+        <h3 align="center" style="font-weight: bold">
+            Enter the title of the event the event's password in the boxes below,<br>
+            then load responses.
+        </h3>
 
         <main>
             <div class="question">
@@ -27,7 +31,7 @@
                         <input type="password" id="password" name="password">
                     </div>
                 </form>
-                <button onclick="loadResponses()" style="margin: 10px 0 0 0;">load responses</button>
+                <button onclick="loadResponses()" id="load-responses">load responses</button>
                 <p align="center" id="message"></p>
                 <h3 class="instructions" align="center" style="display: none;">
                     Toggle each of the buttons below to look at each person's availability.<br>
