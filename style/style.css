@@ -1,7 +1,11 @@
 header {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
+    border: solid 5px black;
+    border-radius: 20px;
+    margin: 10px 0 50px 0;
 }
 
 main, .question {
@@ -38,6 +42,14 @@ main, .question {
 button {
     background-color: white;
     border: solid 0.5px black;
+}
+
+.request {
+    font-size: 30px;
+    height: 45px;
+    margin: 0 10px 0 10px;
+    font-weight: bold;
+    border: solid 2px black;
 }
 
 .label {

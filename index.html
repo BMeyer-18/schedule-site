@@ -9,13 +9,13 @@
     <body>
         <header>
             <h1>Scheduler</h1>
-            <div align="right">
-                <a href="./viewer.html"><h2>View Responses</h2></a>
-                <a href="./registration.html"><h3>Create New Event</h3></a>
-            </div>
+            <a href="./viewer.html"><h2>View Responses</h2></a>
+            <a href="./registration.html"><h2>Create New Event</h2></a>
         </header>
 
         <h1 align="center">Send Your Schedule</h1>
+        <h3 align="center" style="font-weight: bold">Enter your name and the title of the event in the boxes below.</h3>
+        <br>
 
         <main>
             <form>
@@ -29,7 +29,7 @@
                 </div>
             </form>
             <section>
-                <h3 align="center">Select your availabilty<br>for each time slot</h3>
+                <h3 align="center">Then, select your availabilty<br>for each time slot...</h3>
                 <div id="level-description">
                     <p align="left">completely<br>busy</p>
                     <p align="center">free if<br>needed</p>
@@ -41,7 +41,7 @@
                 <button class="level-4 selector">4</button>
                 <button class="level-5 selector selected">5</button>
             </section>
-            <h3>and fill out the grid below</h3>
+            <h3 align="center">...and fill out the grid below.<br>You can submit at the bottom of the page.</h3>
             <section id="full-grid">
                 <div id="time-labels"></div>
                 <div id="grid">
@@ -54,9 +54,14 @@
                     <div class="label">Saturday</div>
                 </div>
             </section>
+            <h3 align="center">
+                Submitting will upload your response, or update it if you've already submitted a repsonse.<br>
+                Deleting will permanently remove your response if you've already submitted one.<br>
+                Deleting is PERMANENT and only requires a name and event.
+            </h3>
             <div>
-                <button onclick="submit()" style="background-color: lightgreen">submit</button>
-                <button onclick="remove()" style="background-color: lightcoral">delete</button>
+                <button class="request" onclick="submit()" style="background-color: lightgreen">submit</button>
+                <button class="request" onclick="remove()" style="background-color: lightcoral">delete</button>
             </div>
             <p align="center" id="message"></p>
         </main>
@@ -64,7 +69,7 @@
         <footer>
             <h3>
                 If you have feedback, please let me know!<br>
-                <a target="_blank" href="mailto:bmeyer@olin.edu?subject=Scheduler feedback IMPORTANT LOOK NOW!!!!">bmeyer@olin.edu</a>
+                (You know how to reach me.)
             </h3>
             <p>
                 I made all parts of this website myself in an effort to teach myself<br>

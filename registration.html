@@ -8,10 +8,8 @@
     <body>
         <header>
             <h1>Scheduler</h1>
-            <div align="right">
-                <a href="./index.html"><h2>Send Your Schedule</h2></a>
-                <a href="./viewer.html"><h2>View Responses</h2></a>
-            </div>
+            <a href="./index.html"><h2>Send Your Schedule</h2></a>
+            <a href="./viewer.html"><h2>View Responses</h2></a>
         </header>
 
         <h1 align="center">Create New Event</h1>
@@ -28,8 +26,8 @@
                 </div>
             </form>
             <div>
-                <button onclick="submitEvent()" style="background-color: lightgreen;">create</button>
-                <button onclick="deleteEvent()" style="background-color: lightcoral;">delete</button>
+                <button class="request" onclick="submitEvent()" style="background-color: lightgreen;">create</button>
+                <button class="request" onclick="deleteEvent()" style="background-color: lightcoral;">delete</button>
             </div>
             <p align="center" id="message"></p>
             <br>
@@ -53,7 +51,7 @@
         <footer>
             <h3>
                 If you have feedback, please let me know!<br>
-                <a target="_blank" href="mailto:bmeyer@olin.edu?subject=Scheduler feedback IMPORTANT LOOK NOW!!!!">bmeyer@olin.edu</a>
+                (You know how to reach me.)
             </h3>
             <p>
                 I made all parts of this website myself in an effort to teach myself<br>
